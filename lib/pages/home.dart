@@ -14,13 +14,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<CategoryModel> categories = [];
+  List<DietModel> diets = [];
+
+  @override
+  void initState(){
+    super.initState();
+    _getCategories();
+    _getDiet();
+  }
 
   void _getCategories(){
     categories = CategoryModel.getCategories();
   }
 
   void _getDiet(){
-    Diets = DietModel.getDiet();
+    diets = DietModel.getDiet();
   }
 
   @override
@@ -53,10 +61,43 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 20,),
               Container(
                 height: 200,
-                color: Colors.amberAccent,
-                child: ListView.builder(
+                // color: Colors.amberAccent,
+                child: ListView.separated(
+                  itemCount: diets.length,
+                  scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) => SizedBox(height: 25,),
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20
+                  ),
                   itemBuilder: (context, index){
-                    return Container();
+                    return Container(
+                      width: 150,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: diets[index].tricolor.withOpacity(0.3)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(9),
+                              child: SvgPicture.asset(diets[index].IconPath),
+                            ),
+                          ),
+                          
+                          Text(diets[index].Name)
+
+                        ],
+                      ),
+                    );
                   }
                 ),
               )

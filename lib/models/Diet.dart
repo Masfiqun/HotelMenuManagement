@@ -11,9 +11,16 @@ class DietModel{
     required this.tricolor
   });
 
-  static List<DietModel> getDiet{
-    List<DietModel> Diets = [];
+  static List<DietModel> getDiet(){
+    List<DietModel> diets = [];
 
-    return Diets;
+    diets.add(
+      DietModel(
+        Name: 'Salad', 
+        IconPath: 'assets/icons/sal.svg', 
+        tricolor: Colors.amberAccent)
+    );
+
+    return diets;
   }
 }
