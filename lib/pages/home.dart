@@ -92,8 +92,18 @@ class _HomePageState extends State<HomePage> {
                               child: SvgPicture.asset(diets[index].IconPath),
                             ),
                           ),
-                          
-                          Text(diets[index].Name)
+                          Text(
+                            diets[index].Name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold
+                            ),
+                            ),
+                          Text(
+                            diets[index].description,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w200
+                            ),
+                            )
 
                         ],
                       ),
