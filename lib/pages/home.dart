@@ -67,8 +67,8 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   separatorBuilder: (context, index) => SizedBox(height: 25,),
                   padding: EdgeInsets.only(
-                    left: 20,
-                    right: 20
+                    right: 20,
+                    left: 20
                   ),
                   itemBuilder: (context, index){
                     return Container(

@@ -5,12 +5,14 @@ class DietModel{
   String IconPath;
   String description;
   Color tricolor;
+  // String button;
 
   DietModel({
     required this.Name,
     required this.IconPath,
     required this.description,
-    required this.tricolor
+    required this.tricolor,
+    // required this.button
   });
 
   static List<DietModel> getDiet(){
@@ -21,7 +23,7 @@ class DietModel{
         Name: 'Salad', 
         IconPath: 'assets/icons/sal.svg', 
         description: 'Good for Health',
-        tricolor: Colors.amberAccent)
+        tricolor: Colors.amberAccent),
     );
 
     diets.add(
@@ -34,7 +36,7 @@ class DietModel{
 
     diets.add(
       DietModel(
-        Name: 'Boiled Egg',
+        Name: 'Opur Dim',
         IconPath: 'assets/icons/egg.svg',
         description: '3 pieces',
         tricolor: Colors.orangeAccent
