@@ -31,11 +31,11 @@ class PopularDietModel{
 
     popularDiets.add(
       PopularDietModel(
-        name: 'Honey Pancake', 
-        iconPath: 'assets/icons/pan.svg', 
-        level: 'Medium', 
-        calories: '230kCal', 
-        duration: '30 min', 
+        name: 'Normal Salad', 
+        iconPath: 'assets/icons/sal.svg', 
+        level: 'Easy', 
+        calories: '100kCal', 
+        duration: '10 min', 
         boxIsSelected: true
       )
     );

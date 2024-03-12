@@ -67,14 +67,14 @@ class _HomePageState extends State<HomePage> {
               // scrollDirection: Axis.vertical,
               itemCount: popularDiets.length,
               shrinkWrap: true,
-              separatorBuilder: (context, index) => SizedBox(width: 25,),
+              separatorBuilder: (context, index) => SizedBox(height: 15,),
               padding: EdgeInsets.only(
                 left: 20,
                 right: 20
               ),
               itemBuilder: (context, index) {
                 return Container(
-                  height: 200,
+                  height: 100,
                   // color: Colors.amberAccent
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
