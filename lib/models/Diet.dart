@@ -4,6 +4,8 @@ class DietModel{
   String Name;
   String IconPath;
   String description;
+  String duration;
+  bool viewIsSelected;
   Color tricolor;
   // String button;
 
@@ -11,6 +13,8 @@ class DietModel{
     required this.Name,
     required this.IconPath,
     required this.description,
+    required this.duration,
+    required this.viewIsSelected,
     required this.tricolor,
     // required this.button
   });
@@ -22,7 +26,9 @@ class DietModel{
       DietModel(
         Name: 'Salad', 
         IconPath: 'assets/icons/sal.svg', 
-        description: 'Good for Health',
+        description: 'Mixed',
+        duration: '20 mins',
+        viewIsSelected: true,
         tricolor: Colors.amberAccent),
     );
 
@@ -31,14 +37,18 @@ class DietModel{
         Name: 'Pancake', 
         IconPath: 'assets/icons/pan.svg', 
         description: '2 pieces', 
+        duration: '30 mins',
+        viewIsSelected: true,
         tricolor: Colors.cyanAccent)
     );
 
     diets.add(
       DietModel(
-        Name: 'Opur Dim',
+        Name: 'Boiled egg',
         IconPath: 'assets/icons/egg.svg',
         description: '3 pieces',
+        duration: '15 mins',
+        viewIsSelected: false,
         tricolor: Colors.orangeAccent
         // tricolor: Color.fromARGB(179, 40, 109, 59)
       )

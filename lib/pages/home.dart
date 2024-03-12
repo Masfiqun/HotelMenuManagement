@@ -16,25 +16,15 @@ class _HomePageState extends State<HomePage> {
   List<CategoryModel> categories = [];
   List<DietModel> diets = [];
 
-  @override
-  void initState(){
-    super.initState();
-    _getCategories();
-    _getDiet();
-  }
-
-  void _getCategories(){
+  
+  void _getinitialinfo(){
     categories = CategoryModel.getCategories();
-  }
-
-  void _getDiet(){
     diets = DietModel.getDiet();
   }
 
   @override
   Widget build(BuildContext context) {
-    _getCategories();
-    _getDiet();
+    _getinitialinfo();
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -45,77 +35,105 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 20,),
           category(),
           SizedBox(height: 20,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  'Recommendation for Diet',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18
-                  ),
-                  ),
-              ),
-              SizedBox(height: 20,),
-              Container(
-                height: 200,
-                // color: Colors.amberAccent,
-                child: ListView.separated(
-                  itemCount: diets.length,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (context, index) => SizedBox(height: 25,),
-                  padding: EdgeInsets.only(
-                    right: 20,
-                    left: 20
-                  ),
-                  itemBuilder: (context, index){
-                    return Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: diets[index].tricolor.withOpacity(0.3)
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(9),
-                              child: SvgPicture.asset(diets[index].IconPath),
-                            ),
-                          ),
-                          Text(
-                            diets[index].Name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold
-                            ),
-                            ),
-                          Text(
-                            diets[index].description,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w200
-                            ),
-                            )
-
-                        ],
-                      ),
-                    );
-                  }
-                ),
-              )
-            ],
-          )
+          Diet_Model()
         ],
       ),
     );
+  }
+
+  Column Diet_Model() {
+    return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                'Recommendation for Diet',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                ),
+                ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              height: 190,
+              // color: Colors.amberAccent,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: diets.length,
+                separatorBuilder: (context, index) => SizedBox(width: 10,),
+                padding: EdgeInsets.only(
+                  left: 20,
+                  right: 20
+                ),
+                itemBuilder: (context, index){
+                  return Container(
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: diets[index].tricolor.withOpacity(0.3)
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(9),
+                            child: SvgPicture.asset(diets[index].IconPath),
+                          ),
+                        ),
+                        Text(
+                          diets[index].Name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Text(
+                          diets[index].description + ' | ' + diets[index].duration,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w200,
+                            fontSize: 13
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          height: 35,
+                          width: 130,
+                          child: Center(
+                            child: Text(
+                              'View',
+                              style: TextStyle(
+                                color: diets[index].viewIsSelected ? Colors.white : Colors.red[400],
+                                // fontSize: 
+                              ),
+                              
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                diets[index].viewIsSelected ? Colors.lightBlueAccent : Colors.transparent,
+                                diets[index].viewIsSelected ? Colors.deepPurpleAccent : Colors.transparent
+                              ]
+                            ),
+                            borderRadius: BorderRadius.circular(50)
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }
+              ),
+            )
+          ],
+        );
   }
 
   Column category() {
@@ -140,7 +158,7 @@ class _HomePageState extends State<HomePage> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                separatorBuilder: (context, index) => SizedBox(width: 25,),
+                separatorBuilder: (context, index) => SizedBox(width: 10,),
                 padding: EdgeInsets.only(
                   left: 20,
                   right: 20
