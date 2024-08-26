@@ -2,7 +2,7 @@
 
 A new Flutter project to build a online food delivery system.
 
-## Getting Started
+## App Preview
 
 <table>
     <tr>
